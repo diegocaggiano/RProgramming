@@ -6,9 +6,8 @@ pollutantmean <- function(directory,pollutant, id = 1:332)
   # In the id vector we have the indexes of the files to be considered
   # For instance if vector id = c(1,19,200), it means the files to be considered
   # are the following: 001.csv, 019.csv and 200.csv
-  # That implies to convert the integer number to character
+  # That implies converting the integer numbers to character
   
-  # initialize vector with file names
   file_names<- vector(length = length(id))
   
   for (i in 1:length(id)){ #for every file
@@ -30,24 +29,28 @@ pollutantmean <- function(directory,pollutant, id = 1:332)
   number_of_rows <- 0
  
   # process every file 
-    for (j in 1:length(file_names)) {
+   for (j in 1:length(file_names)) {
       
       # read file
       content <- read_csv(file_names[j],col_names = TRUE, col_types = list(col_date(), col_double(), col_double(), col_integer()))    
       # get only those rows wich are not NA for the respective pollutant
       goods <- !is.na(content[,pollutant])
+      
       content2 <- content[goods,]
-      
-      # adding measures and number of rows 
-      measure <- measure + sum(content2[,pollutant])
-      number_of_rows <- number_of_rows + nrow(content2)
-      
+      if (nrow(content2) > 0){
+        # adding measures and number of rows 
+        measure <- measure + sum(content2[,pollutant])
+        number_of_rows <- number_of_rows + nrow(content2)
+      }
 
-  }
-  
+   }
   
   # final result for mean
-  return(measure/number_of_rows)
+  if (number_of_rows != 0){
+    return(measure/number_of_rows)}
+  else {
+    return (0)
+  }
 
   
   

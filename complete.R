@@ -26,7 +26,7 @@ complete <- function(directory,id = 1:332)
   }
   
   #initialize result data frame
-  df <- data.frame("id"=integer(0), "obs"=integer(0))
+  df <- data.frame("id"=integer(0), "nobs"=integer(0))
   
   # process every file 
   for (j in 1:length(file_names)) {

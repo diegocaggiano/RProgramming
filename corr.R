@@ -27,7 +27,7 @@ corr <- function(directory, threshold = 0){
         correlation <- cor(content2[,"sulfate"], content2[,"nitrate"])       
         result_vector <- append(result_vector, correlation)
       } #end if
-      
+    
       
     } #end for
     

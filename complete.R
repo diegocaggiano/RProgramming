@@ -50,7 +50,6 @@ complete <- function(directory,id = 1:332)
     
   }
   
-  
   # returning dataframe with results
   return(df)
   

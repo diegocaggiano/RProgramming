@@ -1,4 +1,4 @@
-# function to retrieve list with functions to apply to input matrix
+# function to retrieve list of functions to apply to input matrix
 # we assume input matrix is always invertible
 makeCacheMatrix <- function(input_matrix) {
   inverse_matrix <- NULL
